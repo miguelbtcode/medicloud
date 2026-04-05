@@ -1,0 +1,250 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 1350" font-family="Segoe UI, Arial, sans-serif">
+  <defs>
+    <filter id="shadow" x="-2%" y="-2%" width="104%" height="104%"><feDropShadow dx="1" dy="1" stdDeviation="2" flood-opacity="0.15"/></filter>
+    <linearGradient id="headerGrad" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" style="stop-color:#0078D4"/><stop offset="100%" style="stop-color:#005A9E"/></linearGradient>
+    <linearGradient id="netGrad" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" style="stop-color:#E8F4FD"/><stop offset="100%" style="stop-color:#D0E8F7"/></linearGradient>
+    <linearGradient id="apimGrad" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" style="stop-color:#E0F7FA"/><stop offset="100%" style="stop-color:#B2EBF2"/></linearGradient>
+    <linearGradient id="aksGrad" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" style="stop-color:#FFF8E1"/><stop offset="100%" style="stop-color:#FFECB3"/></linearGradient>
+    <linearGradient id="extGrad" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" style="stop-color:#FBE9E7"/><stop offset="100%" style="stop-color:#FFCCBC"/></linearGradient>
+    <linearGradient id="dataGrad" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" style="stop-color:#E8F5E9"/><stop offset="100%" style="stop-color:#C8E6C9"/></linearGradient>
+    <linearGradient id="secGrad" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" style="stop-color:#FCE4EC"/><stop offset="100%" style="stop-color:#F8BBD0"/></linearGradient>
+    <linearGradient id="monGrad" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" style="stop-color:#F3E5F5"/><stop offset="100%" style="stop-color:#E1BEE7"/></linearGradient>
+    <marker id="arr" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto"><polygon points="0 0, 8 3, 0 6" fill="#0078D4"/></marker>
+  </defs>
+
+  <rect width="1400" height="1350" fill="#F5F5F5" rx="8"/>
+  <rect x="0" y="0" width="1400" height="55" fill="url(#headerGrad)" rx="8"/><rect x="0" y="28" width="1400" height="27" fill="url(#headerGrad)"/>
+  <text x="700" y="36" text-anchor="middle" fill="white" font-size="21" font-weight="bold">MediCloud — Clínica Digital · 7 Microservicios AKS + Event-Driven Architecture</text>
+
+  <text x="700" y="82" text-anchor="middle" fill="#333" font-size="12" font-weight="bold">👨‍⚕️ Médicos · 👤 Pacientes · 💊 Farmacéuticos · 🔬 Laboratoristas · 📱 App Móvil · 🤖 Chatbot IA</text>
+  <line x1="700" y1="90" x2="700" y2="108" stroke="#0078D4" stroke-width="2" marker-end="url(#arr)"/>
+
+  <!-- NETWORKING -->
+  <rect x="20" y="102" width="1360" height="150" rx="10" fill="url(#netGrad)" stroke="#0078D4" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="40" y="122" fill="#0078D4" font-size="13" font-weight="bold">🌐 NETWORKING</text>
+  <rect x="500" y="132" width="340" height="42" rx="8" fill="white" stroke="#0078D4" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="670" y="150" text-anchor="middle" fill="#0078D4" font-size="12" font-weight="bold">Azure Front Door (Premium) + WAF</text>
+  <text x="670" y="166" text-anchor="middle" fill="#555" font-size="9">CDN Global · DDoS · Failover East US 2 ↔ West US 2</text>
+  <rect x="50" y="132" width="150" height="42" rx="8" fill="white" stroke="#0078D4" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="125" y="153" text-anchor="middle" fill="#0078D4" font-size="11" font-weight="bold">Azure DNS</text>
+  <text x="125" y="167" text-anchor="middle" fill="#555" font-size="9">medicloud.com</text>
+  <line x1="200" y1="153" x2="500" y2="153" stroke="#0078D4" stroke-width="1" stroke-dasharray="5,3"/>
+
+  <!-- VNet -->
+  <rect x="50" y="182" width="1310" height="60" rx="6" fill="white" stroke="#0078D4" stroke-width="1" stroke-dasharray="5,3"/>
+  <text x="65" y="198" fill="#0078D4" font-size="10" font-weight="bold">VNet 10.0.0.0/16</text>
+  <rect x="62" y="206" width="130" height="26" rx="4" fill="#E3F2FD" stroke="#90CAF9" stroke-width="0.8"/>
+  <text x="127" y="223" text-anchor="middle" fill="#1565C0" font-size="8" font-weight="bold">AppGW /24</text>
+  <rect x="198" y="206" width="130" height="26" rx="4" fill="#E3F2FD" stroke="#90CAF9" stroke-width="0.8"/>
+  <text x="263" y="223" text-anchor="middle" fill="#1565C0" font-size="8" font-weight="bold">APIM /24</text>
+  <rect x="334" y="206" width="160" height="26" rx="4" fill="#E3F2FD" stroke="#90CAF9" stroke-width="0.8"/>
+  <text x="414" y="223" text-anchor="middle" fill="#1565C0" font-size="8" font-weight="bold">AKS /22 (Azure CNI)</text>
+  <rect x="500" y="206" width="130" height="26" rx="4" fill="#E3F2FD" stroke="#90CAF9" stroke-width="0.8"/>
+  <text x="565" y="223" text-anchor="middle" fill="#1565C0" font-size="8" font-weight="bold">Priv. Endpoints /24</text>
+  <rect x="636" y="206" width="130" height="26" rx="4" fill="#E3F2FD" stroke="#90CAF9" stroke-width="0.8"/>
+  <text x="701" y="223" text-anchor="middle" fill="#1565C0" font-size="8" font-weight="bold">Frontend /24</text>
+  <rect x="772" y="206" width="130" height="26" rx="4" fill="#E3F2FD" stroke="#90CAF9" stroke-width="0.8"/>
+  <text x="837" y="223" text-anchor="middle" fill="#1565C0" font-size="8" font-weight="bold">Functions /24</text>
+  <rect x="908" y="206" width="130" height="26" rx="4" fill="#E3F2FD" stroke="#90CAF9" stroke-width="0.8"/>
+  <text x="973" y="223" text-anchor="middle" fill="#1565C0" font-size="8" font-weight="bold">AI /24</text>
+  <text x="1100" y="223" fill="#666" font-size="9">NSGs por subnet · UDRs · Network Watcher</text>
+
+  <!-- APIM -->
+  <rect x="20" y="260" width="920" height="82" rx="10" fill="url(#apimGrad)" stroke="#00695C" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="40" y="280" fill="#00695C" font-size="13" font-weight="bold">🔗 API MANAGEMENT</text>
+  <rect x="50" y="290" width="220" height="42" rx="8" fill="white" stroke="#00838F" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="160" y="307" text-anchor="middle" fill="#00695C" font-size="11" font-weight="bold">App Gateway v2 + WAF</text>
+  <text x="160" y="323" text-anchor="middle" fill="#555" font-size="8">SSL Term · URL Routing</text>
+  <text x="282" y="313" fill="#00695C" font-size="11">→</text>
+  <rect x="295" y="288" width="350" height="46" rx="8" fill="white" stroke="#00695C" stroke-width="2" filter="url(#shadow)"/>
+  <text x="470" y="306" text-anchor="middle" fill="#00695C" font-size="12" font-weight="bold">Azure API Management</text>
+  <text x="470" y="320" text-anchor="middle" fill="#555" font-size="8">OAuth2 JWT · Rate Limit · Cache · Versioning · Dev Portal · Products: Clinical | Patient | Integration</text>
+  <text x="657" y="313" fill="#00695C" font-size="11">→</text>
+  <rect x="670" y="290" width="250" height="42" rx="6" fill="#E0F2F1" stroke="#00695C" stroke-width="0.8"/>
+  <text x="795" y="305" text-anchor="middle" fill="#00695C" font-size="8" font-weight="bold">/api/v1/citas → AKS · /api/v1/historiales → AKS</text>
+  <text x="795" y="316" text-anchor="middle" fill="#00695C" font-size="8" font-weight="bold">/api/v1/laboratorio → AKS · /api/v1/farmacia → AKS</text>
+  <text x="795" y="327" text-anchor="middle" fill="#00695C" font-size="8" font-weight="bold">/api/v1/facturacion → AKS · /api/v1/chat → Functions</text>
+
+  <!-- AKS -->
+  <rect x="20" y="350" width="920" height="275" rx="10" fill="url(#aksGrad)" stroke="#E65100" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="40" y="372" fill="#E65100" font-size="13" font-weight="bold">☸️ AKS — 7 Microservicios Spring Boot 3 + Java 21</text>
+  <text x="500" y="372" fill="#BF360C" font-size="9">Cluster: Standard_D4s_v5 · Autoscale 3-10 nodos · Azure CNI · AZ 1,2,3 · Workload Identity</text>
+
+  <!-- Ingress -->
+  <rect x="50" y="382" width="870" height="26" rx="5" fill="white" stroke="#FF6D00" stroke-width="1"/>
+  <text x="485" y="400" text-anchor="middle" fill="#E65100" font-size="10" font-weight="bold">NGINX Ingress Controller (Internal LB) — Enrutamiento a microservicios por path</text>
+
+  <!-- Row 1: 4 MS -->
+  <rect x="50" y="416" width="210" height="72" rx="8" fill="white" stroke="#1565C0" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="155" y="434" text-anchor="middle" fill="#1565C0" font-size="11" font-weight="bold">👤 MS Usuarios</text>
+  <text x="155" y="448" text-anchor="middle" fill="#555" font-size="8">Perfiles · Roles · Entra ID sync</text>
+  <text x="155" y="461" text-anchor="middle" fill="#888" font-size="8">→ SQL Database</text>
+  <text x="155" y="480" text-anchor="middle" fill="#E65100" font-size="7" font-weight="bold">📤 UsuarioRegistrado · PerfilActualizado</text>
+
+  <rect x="275" y="416" width="210" height="72" rx="8" fill="white" stroke="#2E7D32" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="380" y="434" text-anchor="middle" fill="#2E7D32" font-size="11" font-weight="bold">📅 MS Citas</text>
+  <text x="380" y="448" text-anchor="middle" fill="#555" font-size="8">Agendamiento · Disponibilidad · Estados</text>
+  <text x="380" y="461" text-anchor="middle" fill="#888" font-size="8">→ SQL Database</text>
+  <text x="380" y="480" text-anchor="middle" fill="#E65100" font-size="7" font-weight="bold">📤 CitaCreada · Completada · Cancelada</text>
+
+  <rect x="500" y="416" width="210" height="72" rx="8" fill="white" stroke="#C62828" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="605" y="434" text-anchor="middle" fill="#C62828" font-size="11" font-weight="bold">📋 MS Historiales</text>
+  <text x="605" y="448" text-anchor="middle" fill="#555" font-size="8">Expediente · Recetas · Adjuntos</text>
+  <text x="605" y="461" text-anchor="middle" fill="#888" font-size="8">→ SQL + Blob Storage</text>
+  <text x="605" y="480" text-anchor="middle" fill="#E65100" font-size="7" font-weight="bold">📤 HistorialCreado · RecetaEmitida</text>
+
+  <rect x="725" y="416" width="210" height="72" rx="8" fill="white" stroke="#00695C" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="830" y="434" text-anchor="middle" fill="#00695C" font-size="11" font-weight="bold">🔬 MS Laboratorio</text>
+  <text x="830" y="448" text-anchor="middle" fill="#555" font-size="8">Órdenes · Resultados · Catálogo</text>
+  <text x="830" y="461" text-anchor="middle" fill="#888" font-size="8">→ SQL + Blob Storage</text>
+  <text x="830" y="480" text-anchor="middle" fill="#E65100" font-size="7" font-weight="bold">📤 OrdenCreada · ResultadoListoLab</text>
+
+  <!-- Row 2: 3 MS -->
+  <rect x="50" y="498" width="210" height="72" rx="8" fill="white" stroke="#F57F17" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="155" y="516" text-anchor="middle" fill="#F57F17" font-size="11" font-weight="bold">💰 MS Facturación</text>
+  <text x="155" y="530" text-anchor="middle" fill="#555" font-size="8">Cargos · Seguros · Facturas · Pagos</text>
+  <text x="155" y="543" text-anchor="middle" fill="#888" font-size="8">→ SQL Database</text>
+  <text x="155" y="562" text-anchor="middle" fill="#E65100" font-size="7" font-weight="bold">📤 CargoGenerado · FacturaEmitida · PagoRegistrado</text>
+
+  <rect x="275" y="498" width="210" height="72" rx="8" fill="white" stroke="#AD1457" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="380" y="516" text-anchor="middle" fill="#AD1457" font-size="11" font-weight="bold">💊 MS Farmacia</text>
+  <text x="380" y="530" text-anchor="middle" fill="#555" font-size="8">Recetas · Stock · Dispensación</text>
+  <text x="380" y="543" text-anchor="middle" fill="#888" font-size="8">→ SQL Database</text>
+  <text x="380" y="562" text-anchor="middle" fill="#E65100" font-size="7" font-weight="bold">📤 RecetaDispensada · StockBajo</text>
+
+  <rect x="500" y="498" width="210" height="72" rx="8" fill="white" stroke="#4527A0" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="605" y="516" text-anchor="middle" fill="#4527A0" font-size="11" font-weight="bold">📊 MS Reportes</text>
+  <text x="605" y="530" text-anchor="middle" fill="#555" font-size="8">Dashboards · KPIs · Auditoría</text>
+  <text x="605" y="543" text-anchor="middle" fill="#888" font-size="8">→ SQL (read replica)</text>
+  <text x="605" y="562" text-anchor="middle" fill="#1565C0" font-size="7" font-weight="bold">📥 Consume TODOS los eventos (CQRS)</text>
+
+  <!-- ACR -->
+  <rect x="725" y="498" width="210" height="72" rx="8" fill="white" stroke="#E65100" stroke-width="1.2" filter="url(#shadow)"/>
+  <text x="830" y="516" text-anchor="middle" fill="#E65100" font-size="11" font-weight="bold">📦 ACR</text>
+  <text x="830" y="530" text-anchor="middle" fill="#555" font-size="8">Container Registry Premium</text>
+  <text x="830" y="543" text-anchor="middle" fill="#555" font-size="8">7 imágenes Docker · Scanning</text>
+  <text x="830" y="562" text-anchor="middle" fill="#888" font-size="8">Geo-rep · Private Endpoint</text>
+
+  <!-- Service Bus bar -->
+  <rect x="50" y="580" width="885" height="30" rx="6" fill="#FFF3E0" stroke="#FF6D00" stroke-width="1.5"/>
+  <text x="492" y="600" text-anchor="middle" fill="#E65100" font-size="10" font-weight="bold">🔄 Azure Service Bus — 26 Integration Events: CitaCreada · CitaCompletada · RecetaEmitida · ResultadoListoLab · RecetaDispensada · CargoGenerado · StockBajo · + más</text>
+
+  <!-- EXTERNAL -->
+  <rect x="20" y="620" width="920" height="80" rx="10" fill="url(#extGrad)" stroke="#BF360C" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="40" y="641" fill="#BF360C" font-size="12" font-weight="bold">⚡ SERVICIOS EXTERNOS A AKS</text>
+  <rect x="50" y="650" width="200" height="42" rx="8" fill="white" stroke="#BF360C" stroke-width="1.2" filter="url(#shadow)"/>
+  <text x="150" y="667" text-anchor="middle" fill="#BF360C" font-size="10" font-weight="bold">App Service (P1v3)</text>
+  <text x="150" y="682" text-anchor="middle" fill="#555" font-size="8">Portal Web React · Frontend</text>
+  <rect x="265" y="650" width="200" height="42" rx="8" fill="white" stroke="#E65100" stroke-width="1.2" filter="url(#shadow)"/>
+  <text x="365" y="667" text-anchor="middle" fill="#E65100" font-size="10" font-weight="bold">🔔 Azure Functions</text>
+  <text x="365" y="682" text-anchor="middle" fill="#555" font-size="8">Notificaciones · Recordatorios</text>
+  <rect x="480" y="650" width="225" height="42" rx="8" fill="white" stroke="#6A1B9A" stroke-width="1.2" filter="url(#shadow)"/>
+  <text x="592" y="667" text-anchor="middle" fill="#6A1B9A" font-size="10" font-weight="bold">🤖 Azure OpenAI + Bot</text>
+  <text x="592" y="682" text-anchor="middle" fill="#555" font-size="8">Chatbot IA · RAG · Triaje</text>
+  <rect x="720" y="650" width="200" height="42" rx="8" fill="white" stroke="#333" stroke-width="1.2" filter="url(#shadow)"/>
+  <text x="820" y="667" text-anchor="middle" fill="#333" font-size="10" font-weight="bold">Azure AI Search</text>
+  <text x="820" y="682" text-anchor="middle" fill="#555" font-size="8">Vector Store para RAG</text>
+
+  <!-- DATA -->
+  <rect x="20" y="710" width="920" height="110" rx="10" fill="url(#dataGrad)" stroke="#2E7D32" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="40" y="732" fill="#1B5E20" font-size="13" font-weight="bold">🗄️ DATOS (Private Endpoints — sin exposición pública)</text>
+  <rect x="50" y="745" width="140" height="55" rx="8" fill="white" stroke="#2E7D32" stroke-width="1.2" filter="url(#shadow)"/>
+  <text x="120" y="764" text-anchor="middle" fill="#1B5E20" font-size="10" font-weight="bold">Azure SQL DB</text>
+  <text x="120" y="778" text-anchor="middle" fill="#555" font-size="8">7 schemas · Geo-rep</text>
+  <text x="120" y="791" text-anchor="middle" fill="#555" font-size="7">TDE · Auditing</text>
+  <rect x="200" y="745" width="130" height="55" rx="8" fill="white" stroke="#2E7D32" stroke-width="1.2" filter="url(#shadow)"/>
+  <text x="265" y="764" text-anchor="middle" fill="#1B5E20" font-size="10" font-weight="bold">Blob Storage</text>
+  <text x="265" y="778" text-anchor="middle" fill="#555" font-size="8">Imágenes · Docs</text>
+  <text x="265" y="791" text-anchor="middle" fill="#555" font-size="7">Hot+Cool · Immutable</text>
+  <rect x="340" y="745" width="130" height="55" rx="8" fill="white" stroke="#2E7D32" stroke-width="1.2" filter="url(#shadow)"/>
+  <text x="405" y="764" text-anchor="middle" fill="#1B5E20" font-size="10" font-weight="bold">Cosmos DB</text>
+  <text x="405" y="778" text-anchor="middle" fill="#555" font-size="8">Chat sessions</text>
+  <text x="405" y="791" text-anchor="middle" fill="#555" font-size="7">Serverless</text>
+  <rect x="480" y="745" width="130" height="55" rx="8" fill="white" stroke="#2E7D32" stroke-width="1.2" filter="url(#shadow)"/>
+  <text x="545" y="764" text-anchor="middle" fill="#1B5E20" font-size="10" font-weight="bold">Redis Cache</text>
+  <text x="545" y="778" text-anchor="middle" fill="#555" font-size="8">Sesiones · APIM</text>
+  <text x="545" y="791" text-anchor="middle" fill="#555" font-size="7">External cache</text>
+  <rect x="620" y="745" width="130" height="55" rx="8" fill="white" stroke="#2E7D32" stroke-width="1.2" filter="url(#shadow)"/>
+  <text x="685" y="764" text-anchor="middle" fill="#1B5E20" font-size="10" font-weight="bold">Service Bus</text>
+  <text x="685" y="778" text-anchor="middle" fill="#555" font-size="8">Topics + Queues</text>
+  <text x="685" y="791" text-anchor="middle" fill="#555" font-size="7">26 event flows</text>
+  <rect x="760" y="745" width="100" height="55" rx="8" fill="white" stroke="#2E7D32" stroke-width="1.2" filter="url(#shadow)"/>
+  <text x="810" y="767" text-anchor="middle" fill="#1B5E20" font-size="10" font-weight="bold">Key Vault</text>
+  <text x="810" y="783" text-anchor="middle" fill="#555" font-size="8">Secrets · Certs</text>
+  <rect x="870" y="745" width="60" height="55" rx="8" fill="white" stroke="#2E7D32" stroke-width="1.2" filter="url(#shadow)"/>
+  <text x="900" y="770" text-anchor="middle" fill="#1B5E20" font-size="9" font-weight="bold">ACR</text>
+  <text x="900" y="784" text-anchor="middle" fill="#555" font-size="7">PE</text>
+
+  <!-- SECURITY -->
+  <rect x="955" y="260" width="415" height="240" rx="10" fill="url(#secGrad)" stroke="#C62828" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="975" y="282" fill="#B71C1C" font-size="13" font-weight="bold">🔐 IDENTIDAD Y SEGURIDAD</text>
+  <rect x="970" y="296" width="185" height="40" rx="7" fill="white" stroke="#C62828" stroke-width="1" filter="url(#shadow)"/>
+  <text x="1062" y="314" text-anchor="middle" fill="#B71C1C" font-size="10" font-weight="bold">Microsoft Entra ID</text>
+  <text x="1062" y="328" text-anchor="middle" fill="#555" font-size="8">MFA · Cond. Access · PIM</text>
+  <rect x="1165" y="296" width="185" height="40" rx="7" fill="white" stroke="#C62828" stroke-width="1" filter="url(#shadow)"/>
+  <text x="1257" y="314" text-anchor="middle" fill="#B71C1C" font-size="10" font-weight="bold">Service Principals</text>
+  <text x="1257" y="328" text-anchor="middle" fill="#555" font-size="8">CI/CD · APIM OAuth2</text>
+  <rect x="970" y="344" width="185" height="40" rx="7" fill="white" stroke="#C62828" stroke-width="1" filter="url(#shadow)"/>
+  <text x="1062" y="362" text-anchor="middle" fill="#B71C1C" font-size="10" font-weight="bold">Managed Identity</text>
+  <text x="1062" y="376" text-anchor="middle" fill="#555" font-size="8">AKS · Functions · APIM</text>
+  <rect x="1165" y="344" width="185" height="40" rx="7" fill="white" stroke="#C62828" stroke-width="1" filter="url(#shadow)"/>
+  <text x="1257" y="362" text-anchor="middle" fill="#B71C1C" font-size="10" font-weight="bold">RBAC Personalizado</text>
+  <text x="1257" y="376" text-anchor="middle" fill="#555" font-size="8">Médico·Enfermero·Admin·Lab·Farm</text>
+  <rect x="970" y="392" width="380" height="48" rx="7" fill="white" stroke="#C62828" stroke-width="1" filter="url(#shadow)"/>
+  <text x="1160" y="410" text-anchor="middle" fill="#B71C1C" font-size="10" font-weight="bold">AKS Security: Workload Identity · Network Policies (Calico)</text>
+  <text x="1160" y="424" text-anchor="middle" fill="#555" font-size="8">Pods auth vía Entra ID sin secretos · Deny-all entre namespaces · Defender for Containers</text>
+  <text x="1160" y="436" text-anchor="middle" fill="#555" font-size="8">CSI Secret Store Driver → Key Vault · Image scanning ACR</text>
+  <rect x="970" y="448" width="380" height="38" rx="7" fill="white" stroke="#C62828" stroke-width="1" filter="url(#shadow)"/>
+  <text x="1160" y="466" text-anchor="middle" fill="#B71C1C" font-size="10" font-weight="bold">Acceso Condicional + PIM (Just-in-Time)</text>
+  <text x="1160" y="480" text-anchor="middle" fill="#555" font-size="8">MFA externo · Block países · Compliant device · Elevación temporal 4h max</text>
+
+  <!-- GOBERNANZA -->
+  <rect x="955" y="510" width="415" height="130" rx="10" fill="#E3F2FD" stroke="#1565C0" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="975" y="532" fill="#0D47A1" font-size="13" font-weight="bold">🏛️ GOBERNANZA</text>
+  <rect x="970" y="545" width="185" height="35" rx="7" fill="white" stroke="#1565C0" stroke-width="1" filter="url(#shadow)"/>
+  <text x="1062" y="567" text-anchor="middle" fill="#0D47A1" font-size="10" font-weight="bold">Management Groups</text>
+  <rect x="1165" y="545" width="185" height="35" rx="7" fill="white" stroke="#1565C0" stroke-width="1" filter="url(#shadow)"/>
+  <text x="1257" y="567" text-anchor="middle" fill="#0D47A1" font-size="10" font-weight="bold">Azure Policy</text>
+  <rect x="970" y="588" width="185" height="35" rx="7" fill="white" stroke="#1565C0" stroke-width="1" filter="url(#shadow)"/>
+  <text x="1062" y="610" text-anchor="middle" fill="#0D47A1" font-size="10" font-weight="bold">Resource Locks</text>
+  <rect x="1165" y="588" width="185" height="35" rx="7" fill="white" stroke="#1565C0" stroke-width="1" filter="url(#shadow)"/>
+  <text x="1257" y="610" text-anchor="middle" fill="#0D47A1" font-size="10" font-weight="bold">Bicep / IaC</text>
+
+  <!-- Helm -->
+  <rect x="955" y="650" width="415" height="42" rx="8" fill="white" stroke="#E65100" stroke-width="1.2" filter="url(#shadow)"/>
+  <text x="1162" y="668" text-anchor="middle" fill="#E65100" font-size="10" font-weight="bold">🚀 CI/CD: Azure DevOps · Helm Charts (7 MS) · Bicep (infra) · SP Auth · ACR Push → AKS Deploy</text>
+  <text x="1162" y="682" text-anchor="middle" fill="#888" font-size="8">Build Java → Docker → ACR → Helm upgrade → Rolling update zero-downtime</text>
+
+  <!-- MONITORING -->
+  <rect x="20" y="835" width="1350" height="85" rx="10" fill="url(#monGrad)" stroke="#6A1B9A" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="40" y="857" fill="#4A148C" font-size="13" font-weight="bold">📊 MONITOREO, BACKUP Y COSTOS</text>
+  <rect x="50" y="870" width="140" height="36" rx="7" fill="white" stroke="#6A1B9A" stroke-width="1" filter="url(#shadow)"/>
+  <text x="120" y="893" text-anchor="middle" fill="#4A148C" font-size="9" font-weight="bold">Azure Monitor</text>
+  <rect x="200" y="870" width="140" height="36" rx="7" fill="white" stroke="#6A1B9A" stroke-width="1" filter="url(#shadow)"/>
+  <text x="270" y="893" text-anchor="middle" fill="#4A148C" font-size="9" font-weight="bold">Log Analytics</text>
+  <rect x="350" y="870" width="140" height="36" rx="7" fill="white" stroke="#6A1B9A" stroke-width="1" filter="url(#shadow)"/>
+  <text x="420" y="893" text-anchor="middle" fill="#4A148C" font-size="9" font-weight="bold">App Insights</text>
+  <rect x="500" y="870" width="155" height="36" rx="7" fill="white" stroke="#6A1B9A" stroke-width="1" filter="url(#shadow)"/>
+  <text x="577" y="893" text-anchor="middle" fill="#4A148C" font-size="9" font-weight="bold">Container Insights</text>
+  <rect x="665" y="870" width="145" height="36" rx="7" fill="white" stroke="#6A1B9A" stroke-width="1" filter="url(#shadow)"/>
+  <text x="737" y="893" text-anchor="middle" fill="#4A148C" font-size="9" font-weight="bold">Network Watcher</text>
+  <rect x="820" y="870" width="130" height="36" rx="7" fill="white" stroke="#6A1B9A" stroke-width="1" filter="url(#shadow)"/>
+  <text x="885" y="893" text-anchor="middle" fill="#4A148C" font-size="9" font-weight="bold">Azure Backup</text>
+  <rect x="960" y="870" width="140" height="36" rx="7" fill="white" stroke="#6A1B9A" stroke-width="1" filter="url(#shadow)"/>
+  <text x="1030" y="893" text-anchor="middle" fill="#4A148C" font-size="9" font-weight="bold">Cost Management</text>
+  <rect x="1110" y="870" width="130" height="36" rx="7" fill="white" stroke="#6A1B9A" stroke-width="1" filter="url(#shadow)"/>
+  <text x="1175" y="893" text-anchor="middle" fill="#4A148C" font-size="9" font-weight="bold">APIM Analytics</text>
+
+  <!-- FOOTER -->
+  <rect x="20" y="935" width="1350" height="42" rx="8" fill="white" stroke="#DDD" stroke-width="1"/>
+  <text x="40" y="955" fill="#333" font-size="11" font-weight="bold">Empresa: <tspan fill="#555" font-weight="normal">Clínica Salud Regional — 500 empleados, 3 sedes, ~50,000 pacientes/año</tspan></text>
+  <text x="40" y="970" fill="#333" font-size="11" font-weight="bold">Alcance: <tspan fill="#555" font-weight="normal">Citas · Historiales · Laboratorio · Farmacia · Facturación · Reportes · Notificaciones · Chatbot IA</tspan></text>
+
+  <rect x="20" y="982" width="1350" height="32" rx="8" fill="#E8EAF6" stroke="#3F51B5" stroke-width="1"/>
+  <text x="690" y="1003" text-anchor="middle" fill="#283593" font-size="11" font-weight="bold">🌍 Primaria: East US 2 · DR: West US 2 · AKS multi-AZ · SQL Geo-Rep · Storage GRS · 26 Integration Events vía Service Bus</text>
+
+  <rect x="20" y="1020" width="1350" height="32" rx="8" fill="#0078D4"/>
+  <text x="690" y="1041" text-anchor="middle" fill="white" font-size="10" font-weight="bold">AZ-305: ✅ Identidad/Gobernanza · ✅ AKS/Compute · ✅ Networking · ✅ APIM · ✅ Datos · ✅ Event-Driven · ✅ Monitoreo · ✅ DR · ✅ Costos · ✅ AI</text>
+
+  <text x="690" y="1075" text-anchor="middle" fill="#999" font-size="10">MediCloud v4 — Clínica Digital Completa — Proyecto Final Arquitectura de Soluciones con Azure — 2026</text>
+</svg>

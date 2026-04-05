@@ -1,0 +1,7 @@
+subscription_id  = "00000000-0000-0000-0000-000000000000"
+project          = "medicloud"
+environment      = "prod"
+primary_location = "eastus2"
+dr_location      = "westus2"
+owner            = "equipo-infra"
+cost_center      = "IT-Clinical"
