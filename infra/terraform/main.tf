@@ -32,3 +32,11 @@ module "identity" {
 
   owner_object_id = data.azuread_client_config.current.object_id
 }
+
+# ── CI/CD Service Principals ─────────────────────────────────
+module "cicd" {
+  source = "./modules/cicd"
+
+  owner_object_id = data.azuread_client_config.current.object_id
+  subscription_id = var.subscription_id
+}

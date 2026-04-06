@@ -39,3 +39,14 @@ output "clinical_group_ids" {
   description = "Map of clinical role keys to Entra ID group object IDs"
   value       = module.identity.group_ids
 }
+
+# ── CI/CD ─────────────────────────────────────────────────────
+output "cicd_infra_sp" {
+  description = "CI/CD Infra Service Principal (Terraform/IaC pipeline)"
+  value       = module.cicd.infra_sp
+}
+
+output "cicd_apps_sp" {
+  description = "CI/CD Apps Service Principal (Build + Deploy pipeline)"
+  value       = module.cicd.apps_sp
+}
