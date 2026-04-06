@@ -1,22 +1,19 @@
-# ══════════════════════════════════════════════════════════════
-# Module: RBAC Custom Roles (Azure Control Plane)
-# Principle: Least Privilege + Separation of Duties
-# ══════════════════════════════════════════════════════════════
+# --- Module: RBAC (WHO can do WHAT) ---
+# Custom role definitions + all assignments (infra + clinical).
 
 locals {
   scope = "/subscriptions/${var.subscription_id}"
 }
 
-# ──────────────────────────────────────────────────────────────
-# 1. Platform Admin
-#    Who: Infra / DevOps senior
-#    Can: Full control on all MediCloud resources, manage RBAC,
-#         policies, and locks. Excludes subscription-level ops.
-# ──────────────────────────────────────────────────────────────
+# =====================================================================
+# Custom Role Definitions (control plane)
+# =====================================================================
+
+# -- 1. Platform Admin (Infra / DevOps senior)
 resource "azurerm_role_definition" "platform_admin" {
   name        = "MediCloud Platform Admin"
   scope       = local.scope
-  description = "Full control over MediCloud resources, RBAC, policies, and locks. Cannot modify subscription-level settings."
+  description = "Full control over MediCloud resources, RBAC, policies, and locks."
 
   permissions {
     actions = [
@@ -51,16 +48,11 @@ resource "azurerm_role_definition" "platform_admin" {
   assignable_scopes = [local.scope]
 }
 
-# ──────────────────────────────────────────────────────────────
-# 2. Platform Operator
-#    Who: DevOps / SRE
-#    Can: Operate AKS, manage deployments, ACR push/pull,
-#         view monitoring. Cannot modify networking or security.
-# ──────────────────────────────────────────────────────────────
+# -- 2. Platform Operator (DevOps / SRE)
 resource "azurerm_role_definition" "platform_operator" {
   name        = "MediCloud Platform Operator"
   scope       = local.scope
-  description = "Operate AKS, ACR, deployments, and monitoring. Cannot modify networking, security, or RBAC."
+  description = "Operate AKS, ACR, deployments, and monitoring. No networking/security/RBAC."
 
   permissions {
     actions = [
@@ -87,16 +79,11 @@ resource "azurerm_role_definition" "platform_operator" {
   assignable_scopes = [local.scope]
 }
 
-# ──────────────────────────────────────────────────────────────
-# 3. Developer
-#    Who: Application developers
-#    Can: Read resources, query logs for debugging, pull
-#         from ACR. Cannot modify infrastructure.
-# ──────────────────────────────────────────────────────────────
+# -- 3. Developer (read-only + debugging)
 resource "azurerm_role_definition" "developer" {
   name        = "MediCloud Developer"
   scope       = local.scope
-  description = "Read-only on infrastructure. Access to logs, App Insights, and ACR pull for debugging and local development."
+  description = "Read-only on infrastructure. Logs, App Insights, and ACR pull."
 
   permissions {
     actions = [
@@ -119,16 +106,11 @@ resource "azurerm_role_definition" "developer" {
   assignable_scopes = [local.scope]
 }
 
-# ──────────────────────────────────────────────────────────────
-# 4. Security Auditor
-#    Who: Security / compliance team
-#    Can: Read everything for auditing. Full access to audit
-#         logs, policies, and RBAC assignments (read-only).
-# ──────────────────────────────────────────────────────────────
+# -- 4. Security Auditor (read-everything for compliance)
 resource "azurerm_role_definition" "security_auditor" {
   name        = "MediCloud Security Auditor"
   scope       = local.scope
-  description = "Read-only across all resources. Full access to audit logs, security configs, policies, and RBAC assignments for compliance review."
+  description = "Read-only across all resources. Audit logs, policies, and RBAC review."
 
   permissions {
     actions = [
@@ -149,17 +131,11 @@ resource "azurerm_role_definition" "security_auditor" {
   assignable_scopes = [local.scope]
 }
 
-# ──────────────────────────────────────────────────────────────
-# 5. Data Operator
-#    Who: DBA / data team
-#    Can: Operate SQL DB, Cosmos DB, Redis, and Storage.
-#         Manage backups, scaling, monitoring of data services.
-#         Cannot access secrets or modify networking.
-# ──────────────────────────────────────────────────────────────
+# -- 5. Data Operator (DBA / data team)
 resource "azurerm_role_definition" "data_operator" {
   name        = "MediCloud Data Operator"
   scope       = local.scope
-  description = "Operate data services (SQL, Cosmos, Redis, Storage). Manage backups, scaling, and monitoring. Cannot access secrets or modify networking."
+  description = "Operate data services (SQL, Cosmos, Redis, Storage). No secrets, no networking."
 
   permissions {
     actions = [
@@ -187,4 +163,60 @@ resource "azurerm_role_definition" "data_operator" {
   }
 
   assignable_scopes = [local.scope]
+}
+
+# =====================================================================
+# Role Assignments — Infra Group → Custom Role (control plane)
+# =====================================================================
+
+resource "azurerm_role_assignment" "platform_admin" {
+  scope              = local.scope
+  role_definition_id = azurerm_role_definition.platform_admin.role_definition_resource_id
+  principal_id       = var.infra_group_ids["platform_admin"]
+}
+
+resource "azurerm_role_assignment" "platform_operator" {
+  scope              = local.scope
+  role_definition_id = azurerm_role_definition.platform_operator.role_definition_resource_id
+  principal_id       = var.infra_group_ids["platform_operator"]
+}
+
+resource "azurerm_role_assignment" "developer" {
+  scope              = local.scope
+  role_definition_id = azurerm_role_definition.developer.role_definition_resource_id
+  principal_id       = var.infra_group_ids["developer"]
+}
+
+resource "azurerm_role_assignment" "security_auditor" {
+  scope              = local.scope
+  role_definition_id = azurerm_role_definition.security_auditor.role_definition_resource_id
+  principal_id       = var.infra_group_ids["security_auditor"]
+}
+
+resource "azurerm_role_assignment" "data_operator" {
+  scope              = local.scope
+  role_definition_id = azurerm_role_definition.data_operator.role_definition_resource_id
+  principal_id       = var.infra_group_ids["data_operator"]
+}
+
+# =====================================================================
+# App Role Assignments — Clinical Group → App Role (data plane)
+# =====================================================================
+
+locals {
+  clinical_role_assignments = {
+    admin         = { group_key = "admin",         app_role_id = "1a2b3c4d-0001-0000-0000-000000000001" }
+    medico        = { group_key = "medico",        app_role_id = "1a2b3c4d-0002-0000-0000-000000000002" }
+    enfermero     = { group_key = "enfermero",     app_role_id = "1a2b3c4d-0003-0000-0000-000000000003" }
+    laboratorista = { group_key = "laboratorista", app_role_id = "1a2b3c4d-0004-0000-0000-000000000004" }
+    farmaceutico  = { group_key = "farmaceutico",  app_role_id = "1a2b3c4d-0005-0000-0000-000000000005" }
+  }
+}
+
+resource "azuread_app_role_assignment" "clinical" {
+  for_each = local.clinical_role_assignments
+
+  app_role_id         = each.value.app_role_id
+  principal_object_id = var.clinical_group_ids[each.value.group_key]
+  resource_object_id  = var.service_principal_id
 }

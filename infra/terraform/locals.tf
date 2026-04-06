@@ -1,7 +1,7 @@
+# --- MediCloud | Locals ---
+
 locals {
-  # ──────────────────────────────────────────────
-  # Common tags applied to ALL resources (CAF)
-  # ──────────────────────────────────────────────
+  # -- Common tags (CAF)
   common_tags = {
     Project            = var.project
     Environment        = var.environment
@@ -11,25 +11,12 @@ locals {
     DataClassification = "confidential"
   }
 
-  # Tags per region (extend common with region-specific)
-  primary_tags = merge(local.common_tags, {
-    Region = var.primary_location
-    DR     = "primary"
-  })
+  # -- Region-specific tags
+  primary_tags = merge(local.common_tags, { Region = var.primary_location, DR = "primary" })
+  dr_tags      = merge(local.common_tags, { Region = var.dr_location, DR = "secondary" })
+  global_tags  = merge(local.common_tags, { Region = "global", DR = "n/a" })
 
-  dr_tags = merge(local.common_tags, {
-    Region = var.dr_location
-    DR     = "secondary"
-  })
-
-  global_tags = merge(local.common_tags, {
-    Region = "global"
-    DR     = "n/a"
-  })
-
-  # ──────────────────────────────────────────────
-  # Resource Group definitions by workload
-  # ──────────────────────────────────────────────
+  # -- Workloads (one RG per workload per region)
   workloads = [
     "networking",
     "aks",

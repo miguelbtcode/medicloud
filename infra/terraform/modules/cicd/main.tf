@@ -1,18 +1,14 @@
-# ══════════════════════════════════════════════════════════════
-# Module: CI/CD Service Principals
-# Two SPs with least privilege separation:
-#   - sp-infra: Terraform/IaC pipeline (broad infra perms)
-#   - sp-apps:  Build + Deploy pipeline (ACR, AKS, App Service)
-# Auth: Federated credentials (OIDC) — no client secrets needed
-# ══════════════════════════════════════════════════════════════
+# --- Module: CI/CD Service Principals ---
+# sp-infra: Terraform/IaC pipeline (broad infra perms)
+# sp-apps:  Build + Deploy pipeline (ACR, AKS, App Service)
 
 locals {
   scope = "/subscriptions/${var.subscription_id}"
 }
 
-# ══════════════════════════════════════════════════════════════
+# =====================================================================
 # 1. SP Infra — Terraform / IaC Pipeline
-# ══════════════════════════════════════════════════════════════
+# =====================================================================
 
 resource "azuread_application" "cicd_infra" {
   display_name = "sp-medicloud-cicd-infra"
@@ -24,7 +20,6 @@ resource "azuread_service_principal" "cicd_infra" {
   owners    = [var.owner_object_id]
 }
 
-# Infra SP roles — needs broad access to manage resources
 resource "azurerm_role_assignment" "infra_contributor" {
   scope                = local.scope
   role_definition_name = "Contributor"
@@ -37,9 +32,9 @@ resource "azurerm_role_assignment" "infra_user_access_admin" {
   principal_id         = azuread_service_principal.cicd_infra.object_id
 }
 
-# ══════════════════════════════════════════════════════════════
+# =====================================================================
 # 2. SP Apps — Build + Deploy Pipeline
-# ══════════════════════════════════════════════════════════════
+# =====================================================================
 
 resource "azuread_application" "cicd_apps" {
   display_name = "sp-medicloud-cicd-apps"
@@ -51,35 +46,30 @@ resource "azuread_service_principal" "cicd_apps" {
   owners    = [var.owner_object_id]
 }
 
-# ACR — push and pull images
 resource "azurerm_role_assignment" "apps_acr_push" {
   scope                = local.scope
   role_definition_name = "AcrPush"
   principal_id         = azuread_service_principal.cicd_apps.object_id
 }
 
-# AKS — get credentials and manage deployments
 resource "azurerm_role_assignment" "apps_aks_contributor" {
   scope                = local.scope
   role_definition_name = "Azure Kubernetes Service Contributor Role"
   principal_id         = azuread_service_principal.cicd_apps.object_id
 }
 
-# AKS — get cluster credentials for kubectl/helm
 resource "azurerm_role_assignment" "apps_aks_cluster_user" {
   scope                = local.scope
   role_definition_name = "Azure Kubernetes Service Cluster User Role"
   principal_id         = azuread_service_principal.cicd_apps.object_id
 }
 
-# App Service & Functions — deploy code
 resource "azurerm_role_assignment" "apps_website_contributor" {
   scope                = local.scope
   role_definition_name = "Website Contributor"
   principal_id         = azuread_service_principal.cicd_apps.object_id
 }
 
-# Key Vault — read secrets during deploy (connection strings, etc.)
 resource "azurerm_role_assignment" "apps_keyvault_reader" {
   scope                = local.scope
   role_definition_name = "Key Vault Secrets User"

@@ -1,8 +1,6 @@
-# ══════════════════════════════════════════════════════════════
-# Root Outputs
-# ══════════════════════════════════════════════════════════════
+# --- MediCloud | Root Outputs ---
 
-# ── Resource Groups ───────────────────────────────────────────
+# -- Resource Groups
 output "primary_resource_groups" {
   description = "Map of primary region resource group names to IDs"
   value       = module.resource_groups.primary
@@ -23,13 +21,13 @@ output "governance_resource_group_id" {
   value       = module.resource_groups.governance_id
 }
 
-# ── RBAC ──────────────────────────────────────────────────────
+# -- RBAC
 output "custom_role_ids" {
   description = "Map of custom RBAC role names to their definition IDs"
   value       = module.rbac.role_definition_ids
 }
 
-# ── Identity ──────────────────────────────────────────────────
+# -- Identity
 output "medicloud_app_client_id" {
   description = "MediCloud API Application (client) ID"
   value       = module.identity.app_client_id
@@ -37,10 +35,15 @@ output "medicloud_app_client_id" {
 
 output "clinical_group_ids" {
   description = "Map of clinical role keys to Entra ID group object IDs"
-  value       = module.identity.group_ids
+  value       = module.identity.clinical_group_ids
 }
 
-# ── CI/CD ─────────────────────────────────────────────────────
+output "infra_group_ids" {
+  description = "Map of infra role keys to Entra ID group object IDs"
+  value       = module.identity.infra_group_ids
+}
+
+# -- CI/CD
 output "cicd_infra_sp" {
   description = "CI/CD Infra Service Principal (Terraform/IaC pipeline)"
   value       = module.cicd.infra_sp

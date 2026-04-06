@@ -1,3 +1,5 @@
+# --- Module: Resource Groups | Outputs ---
+
 output "primary" {
   description = "Map of primary region resource group names to IDs"
   value       = { for k, rg in azurerm_resource_group.primary : k => rg.id }

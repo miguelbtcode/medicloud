@@ -1,3 +1,5 @@
+# --- Module: RBAC | Outputs ---
+
 output "role_definition_ids" {
   description = "Map of custom role names to their resource IDs"
   value = {

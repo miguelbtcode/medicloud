@@ -1,3 +1,5 @@
+# --- MediCloud | Providers & Backend ---
+
 terraform {
   required_version = ">= 1.5.0"
 
@@ -22,7 +24,6 @@ terraform {
 
 provider "azurerm" {
   features {}
-
   subscription_id = var.subscription_id
 }
 
